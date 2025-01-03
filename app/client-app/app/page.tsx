@@ -4,10 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { useEffect, useState } from "react";
-import internal from "stream";
 
 export default function Home() {
-  const URL = "http://192.168.1.149";
+  return (
+    <>
+      <Chip URL={"http://192.168.1.149"} />;
+      <Chip URL={"http://192.168.1.148"} />;
+    </>
+  );
+}
+
+function Chip({ URL }: { URL: string }) {
   const [info, setInfo] = useState<{
     manual_mode: boolean;
     time: string;
@@ -56,7 +63,7 @@ export default function Home() {
 
   if (info) {
     return (
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <div className="grid grid-rows-[20px_1fr_20px] justify-items-center font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <div style={{ marginRight: "20px" }}>{info.time}</div>
           <div className="flex flex-row items-center justify-between rounded-lg">
