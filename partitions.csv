@@ -1,0 +1,20 @@
+# Name,   Type, SubType, Offset,  Size
+nvs,      data, nvs,     0x9000,  0x40000,
+phy_init, data, phy,     0x49000, 0x1000,
+factory,  app,  factory, 0x50000, 0x2B0000,
+
+## Explanation:
+# Partition	  Size	  Purpose
+# nvs	        256KB	  Non-volatile storage (for settings!)
+# phy_init	  4KB	    WiFi/BT calibration data
+# factory	    2.7MB	    Your application
+
+
+# After exhaustion: Cells can get "stuck" (always 0 or 1), causing write failures or data corruption. (~100,000 (conservative estimate: 10,000))
+
+# I'm constantly saving the time into flash (to keep it in case of reboot)
+
+# Good news: ESP-IDF's NVS has built-in wear-leveling! It doesn't write to the same flash location every time. It:
+#   - Spreads writes across the entire NVS partition
+#   - Your NVS partition is 256KB
+#   - Flash sector size = 4KB, so ~64 sectors available (so 64x times those 10k-100k writes)

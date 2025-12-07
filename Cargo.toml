@@ -24,15 +24,12 @@ experimental = ["esp-idf-svc/experimental"]
 
 [dependencies]
 log = "0.4"
-esp-idf-svc = { version = "0.49", features = ["critical-section", "embassy-time-driver", "embassy-sync"] }
-anyhow = "=1.0.86"
-embedded-svc = "=0.28.0"
-shtcx = "=1.0.0"
-chrono = "0.4.39"
-# toml-cfg = "=0.1.3"
-serde = "1.0.217"
+esp-idf-svc = { version = "0.50", features = ["critical-section", "embassy-time-driver", "embassy-sync"] }
+anyhow = "1"
+shtcx = "1.0.0"
+chrono = "0.4"
+serde = "1.0"
 serde_json = "1.0"
 
 [build-dependencies]
-embuild = "0.32.0"
-cc = "=1.1.30" # Version "1.1.30" necessary until a new version of `esp-idf-sys` is released
+embuild = "0.33"
